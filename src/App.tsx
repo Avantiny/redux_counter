@@ -1,9 +1,77 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components'
+import galaxy from './Galaxy.jpg'
 
 const Button = styled.button`
-color: red;
+  background-color: #083e639d;
+  border: 2px solid black;
+  border-radius: 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  /* flex-shrink: 0; */
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin-left: 10px;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  :hover {
+  box-shadow: rgba(80, 63, 205, 0.863) 0 5px 40px;
+  transition-duration: .1s;
+  }
+  @media (max-width: 870px)  {
+    font-size: 20px !important;
+    margin-top: 10px;
+  }
+`
+
+const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: row;
+  align-content: center;
+  @media (max-width: 870px)  {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+`
+
+const MainDiv = styled.div`
+  align-self: center;
+  width: 100%;
+  height: 100vh;
+  align-items: center !important;
+  align-content: center;
+  margin: 0px;
+  padding: 0px;
+  background: url(${galaxy});
+  background-size: 100% 100%
+`
+
+const CounterDiv = styled.div`
+display: flex;
+align-self: center;
+opacity: 0.8;
+justify-content: center;
+flex-direction: row;
+color: white;
+font-size: 50px;
+font-family: "Inter UI","SF Pro Display";
+text-shadow: 2px 2px 8px black;
+
+`
+
+const Span = styled.span`
+text-shadow: rgb(89, 71, 219) 0 15px 40px, 2px 2px 8px black;
+
 `
 
 const selectCount = (state: any) => state.counter.value
@@ -43,14 +111,16 @@ export const counterSlice = createSlice({
 });
 
 const App = () => {
+
   const dispatch = useDispatch();
   const count = useSelector(selectCount);
 
   return (
-    <>
-      <div>
-        Counter: {count}
-      </div>
+    <MainDiv>
+      <CounterDiv>
+        <h1 ><Span>{count}</Span></h1>
+      </CounterDiv>
+      <ButtonDiv>
       <Button onClick = {() => dispatch(counterSlice.actions.addTwo())}>
         x + 1
       </Button>
@@ -75,7 +145,8 @@ const App = () => {
       <Button onClick = {() => dispatch(counterSlice.actions.setInitial())}>
         set to {INITIAL_VALUE}
       </Button>
-    </>
+      </ButtonDiv>
+    </MainDiv>
   )
 }
 
