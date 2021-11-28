@@ -1,18 +1,11 @@
 import './index.css'
-import ReactDOM from 'react-dom';
-import App from './App';
-import { Provider } from 'react-redux';
-import { counterSlice } from './App';
-import { configureStore } from '@reduxjs/toolkit';
-
-const store = configureStore({
-  reducer: {
-    counter: counterSlice.reducer,
-  },
-})
+import ReactDOM from 'react-dom'
+import App from './App'
+import { Provider } from 'react-redux'
+import { store } from './Components/Store'
 
 ReactDOM.render(
-  <Provider store = {store}>
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
