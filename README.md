@@ -1,3 +1,17 @@
+# Redux counter
+Simple counter I created to try out working with Redux state management library. 
+Demo: https://reduxcounter.dkure.cz
+
+The app uses basic Redux concepts such as:
+- Slice
+- Store
+- Reducers
+- Dispatch
+- useDispatch
+- useSelector
+
+The design choices were made my lovely wife <3
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
